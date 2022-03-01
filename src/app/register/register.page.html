@@ -1,0 +1,79 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Completa los datos...</ion-title>
+        <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+      </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="floating"> Nombre y Apellidos del Asesor  </ion-label>
+        <ion-input type="text" [(ngModel)]="full_name"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating"> Numero Celular </ion-label>
+        <ion-input type="text" [(ngModel)]="phone_number"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating"> 4 Ultimos digitos de la Cedula  </ion-label>
+        <ion-input type="text" [(ngModel)]="identificacion"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating"> Usuario </ion-label>
+        <ion-input type="text" [(ngModel)]="username"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="floating"> Contraseña </ion-label>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating"> Confirma tu Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="confirm_password"></ion-input>
+      </ion-item>
+
+   <!--    <ion-item>  
+        <ion-label text-center>   Selecciona 2 imagenes </ion-label>  
+<br>
+<br>
+      <ion-button expand="full" fill="outline" (click)="abrirGaleria()">    
+        Documento y Prfil   <br>          
+        <ion-icon name="images"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <div id="LoadedImages" *ngIf="fotos">
+       <ion-item *ngFor="let item of fotos; let i = index">           
+          <ion-icon name="close-circle" (click)="borrarFoto(i)"></ion-icon>
+          <img [src]="item" class="imagenes">   
+      </ion-item> -->
+     <!--       <ion-item>       
+        <img src="http://lorempixel.com/350/230" >        
+          <ion-icon name="close-circle-outline" class="imagenes"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <img src="http://lorempixel.com/350/230" >
+        <ion-icon name="close-circle-outline" class="imagenes"></ion-icon>
+      </ion-item>
+    </div>
+    -->
+    </ion-list>
+  
+    <div padding>
+      <ion-button expand="full" fill="outline" (click)="addRegister()">Registrate</ion-button>
+      <ion-button expand="full" fill="outline" (click)="formLogin()">Ya estoy Registrado</ion-button>
+    </div>
+  
+  </ion-content>
+
+
+

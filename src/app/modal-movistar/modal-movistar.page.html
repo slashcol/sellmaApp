@@ -1,0 +1,168 @@
+<ion-header no-border >
+    <ion-toolbar color="dark" >
+        <div   *ngFor="let upsaldo of upsaldos" >
+      <ion-button slot="start"  expand="block" color="secondary" fill="outline">
+        Tienes para recargas $ {{upsaldo.saldo}}
+        <ion-icon name="phone-portrait"></ion-icon>
+      </ion-button>
+     <!--  <ion-buttons slot="end">
+          <ion-back-button text="Volver" icon="return-left" color="tertiary" fill="outline"></ion-back-button>
+        </ion-buttons>  -->
+      </div>
+    </ion-toolbar>
+    <!-- <ion-searchbar color="dark" animated 
+                            (ionChange)="buscar( $event )"></ion-searchbar>
+   -->
+  
+    <!-- <ion-searchbar color="dark" animated 
+                            (ionChange)="buscar( $event )"></ion-searchbar>
+   -->
+</ion-header>
+
+<ion-content color="dark" padding fullscreen >
+    <ion-refresher  slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="dots"
+          refreshingText=" Estamos Trabajando... {{ username }} "  >
+        </ion-refresher-content>
+      </ion-refresher>
+<!-- 
+<p>
+  {{ no_abonado }}  - {{ valor }} 
+</p> -->
+
+<div class="carga-box" >
+    <h1>Paquetes Movistar</h1>
+    
+    
+    
+    <div class="textbox">
+      <input type="number" [(ngModel)]="no_abonado" placeholder="Numero">
+    </div>
+    <br>
+<ion-item color="dark" >
+    <ion-label color="light" >Escoge Tu paquete</ion-label>
+    <ion-select color="dark" [(ngModel)]="operador" >
+      <ion-select-option value="102">1 PAQUETE</ion-select-option>
+      <ion-select-option value="103">2 PAQUETE</ion-select-option>
+      <ion-select-option  value="104">3 PAQUETE</ion-select-option>
+      <ion-select-option value="105"> 4 PAQUETE</ion-select-option>
+       <ion-select-option value="106"> 5 PAQUETE</ion-select-option>
+      <ion-select-option value="107"> 6 PAQUETE</ion-select-option>
+      <ion-select-option value="108"> 7 PAQUETE</ion-select-option>
+      <ion-select-option value="109"> 8 PAQUETE</ion-select-option>
+      <ion-select-option value="110"> 9 PAQUETE</ion-select-option>
+      <ion-select-option value="111"> 10 PAQUETE</ion-select-option>
+      <ion-select-option value="112">11 PAQUETE</ion-select-option>
+      <ion-select-option value="113">12 PAQUETE</ion-select-option>
+      <ion-select-option  value=147>13 PAQUETE</ion-select-option>
+      <ion-select-option value="148"> 14 PAQUETE</ion-select-option>
+       <ion-select-option value="149"> 15 PAQUETE</ion-select-option>
+      <ion-select-option value="150"> 16 PAQUETE</ion-select-option>
+      <ion-select-option value="151"> 17 PAQUETE</ion-select-option>
+      <ion-select-option value="152"> 18 PAQUETE</ion-select-option>
+      <ion-select-option value="153"> 19 PAQUETE</ion-select-option>
+      <ion-select-option value="154"> 20 PAQUETE</ion-select-option>
+      <ion-select-option value="188">21 PAQUETE</ion-select-option>
+      <ion-select-option value="189">22 PAQUETE</ion-select-option>
+      <ion-select-option  value="235">23 PAQUETE</ion-select-option>
+      <ion-select-option value="236"> 24 PAQUETE</ion-select-option>
+       <ion-select-option value="237"> 25 PAQUETE</ion-select-option>
+      <ion-select-option value="238"> 26 PAQUETE</ion-select-option>
+  
+    </ion-select>
+  </ion-item>
+  
+
+<!--  <ion-button  (click)="EnviarDatos()"
+             color="secondary" expand="full" >
+   Listo
+ </ion-button>
+-->
+
+<div class="textbox">
+  <input type="number" [(ngModel)]="valor" placeholder="Valor">
+</div>
+ 
+  
+    
+  
+    
+  
+    
+   
+    <!-- <ion-grid fixed>
+      <ion-row >
+        <ion-col size-sm="3" size-lg="3" size-md="3" size="3" size-xs="3" *ngFor="let imagen of imagenes"  >        
+           <ion-buttons>
+              <ion-button>
+          <ion-avatar item-start>  <img src="{{imagen}}"/> </ion-avatar>                  
+        </ion-button>
+      </ion-buttons>
+        </ion-col>
+     
+      </ion-row>
+    </ion-grid> -->    
+  
+    <br>
+      
+    <div *ngFor="let upsaldo of upsaldos"  >
+      <ion-button  expand="block" color="success" *ngIf="upsaldo.saldo >= valor"  (click)="hacerRecarga()" fill="outline">
+        Recargar $ {{ valor }} al {{ no_abonado }}
+        <ion-icon slot="start" name="phone-portrait"></ion-icon>
+      </ion-button>
+  
+      <ion-button expand="block" color="danger" *ngIf="valor > upsaldo.saldo" (click)="RecargaProces()" fill="outline">
+         Ups... $ {{ upsaldo.saldo }}  no alcanza
+          <ion-icon slot="start" name="outlet"></ion-icon>
+        </ion-button>
+  
+      </div>  
+  
+ 
+  <br>
+    <button  (click)="salirSinNada()" class="btn2">Mejor en otro momento</button> 
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+     <div>
+       <p>1- 10MB+10MIN+25WP_1D $1,000 </p>
+       <p>2- 50MB+20MIN+70WP_3D $3,000</p>
+       <p>3- Min Ilimit Todo Operador+150MB Full +300MB de WHTP +130MB de FBK y TWIT +10 SMS 7D $6,000</p>
+       <p>4- 15 DIAS o 320MB Redes y Wp+500MB+100SMS TD+Ilimitado TD $20,000</p>
+       <p>5- 100MB_1D $1,700</p>
+       <p>6- 210MB_2D $3,200</p>
+       <p>7- 500 MB de Datos Full $4,900</p>
+       <p>8- 7 DIAS o 1434MB de Internet + 150MB Whatsapp 13,900</p>
+       <p>9- 20MIN_1D $1,000</p>
+       <p>10- 50MIN_3D $2,900</p>
+       <p>11- 85MIN_7D $4,900</p>
+       <p>12- 550MIN_30D  $22,900</p>
+       <p>13- 1GB+MIN ILIMITDOS_7D  $10,000</p>
+       <p>14- 2GB+MINILIMTADOS_15D   $20,000</p>
+       <p>15- Full 2.5 GB + 200 MB WhatsApp 15D  $24,900</p>
+       <p>16- Activa 200 minutos Todo Destino 30 dias $9,900</p>
+       <p>17- Minutos Ilimitados Todo Destino 30 dias $30,000</p>
+       <p>18- 5 Minutos a Venezuela  $1,000</p>
+       <p>19- 25 Minutos a Venezuela  $5,500</p>
+       <p>20- 100 Minutos a Venezuela $20,000</p>
+       <p>21- MINILIM+1.7GB_30D $40,000</p>
+       <p>22- MINILIM+990MB_30D $25,000</p>
+       <p>23- Ilim Mov+50MB Full +20Min TodoOperador +70MB de WHTP +50MB de FB y TWIT +5SMS $3,000</p>
+       <p>24- 100 Min Todo Operador +2GB Full +SMS Ilimitados Movistar +20 SMS 15D  $20,000</p>
+       <p>25- 20 minutos (1.200 segundos) a Todo Operador  $1,000</p>
+       <p>26- MIN ILIMTS TODO OPERADOR + 1.8 GB Full +550MB Chat Whtpp +500MB FB y TW +80SMS 30D $40,000</p>
+  
+     </div>
+  
+  
+  </ion-content>
+  

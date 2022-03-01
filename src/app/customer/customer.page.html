@@ -1,0 +1,184 @@
+<ion-header no-border >
+  <ion-toolbar color="dark" >
+ <!--      <ion-buttons slot="start"  *ngFor="let upsaldo of upsaldos" >
+    <ion-button  expand="fixed"  color="secondary" fill="outline">
+      Tu Saldo $ {{upsaldo.saldo}}
+      <ion-icon name="trending-up"></ion-icon>
+    </ion-button>
+  </ion-buttons> -->  
+
+    <ion-buttons  slot="end" (click)="proseslogout()" >
+      <ion-button expand="fixed"  color="tertiary" color="tertiary" fill="outline">
+    
+        <ion-icon  slot="start" name="hand"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  <!--   <ion-buttons slot="primary" (click)="addInvitacion()"> -->
+    <ion-buttons slot="primary" >
+      <ion-button expand="fixed"  color="tertiary" fill="outline">
+        Renovar
+        <ion-icon slot="end" name="person-add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary" (click)="actionBtn()">
+      <ion-button expand="fixed"  color="tertiary" fill="outline">
+      Clientes
+        <ion-icon slot="end" name="list"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+<!--   <ion-item>
+    <ion-label>h:mm a</ion-label>
+    <ion-datetime displayFormat="h:mm a"></ion-datetime>
+  </ion-item> -->
+
+<!--   <ion-item>
+    <ion-label>La hora es:</ion-label>
+    <ion-datetime displayFormat="D MMM YYYY HH:mm"  ></ion-datetime>
+  </ion-item> -->
+ 
+   
+  <ion-searchbar color="dark" animated 
+                          (ionChange)="buscar( $event )"></ion-searchbar>
+
+<!--<div class="c6"> <h6 ></h6> </div> -->
+
+<!-- <ion-icon class="c6" name="arrow-dropdown" > </ion-icon> -->
+
+</ion-header>
+
+
+<ion-content color="dark">
+   
+    <ion-refresher  slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="dots"
+      refreshingText=" Cargando clientes para {{ username }} "  >
+    </ion-refresher-content>
+  </ion-refresher>
+<!--  | filtro: textoBuscar  -->
+
+
+
+  <ion-list  *ngIf="customer">
+<!--     <ion-reorder-group [disabled]="false" 
+    (ionItemReorder)="reorder( $event )" > -->
+
+    
+<ion-card  *ngFor="let customer of customers " >  
+  <ion-item-sliding >     
+  <!--   <ion-item-options  side="start">
+      <ion-item-option color="danger" (click)="llamada()"> Llamar </ion-item-option>
+    </ion-item-options> -->
+
+    <ion-item >
+<!--     <ion-item >
+    <ion-avatar item-start>  <img src="assets/pic.jpeg "/> </ion-avatar>
+    </ion-item> -->
+      <ion-label text-left *ngIf="customer.atrazos >= 1"  color="danger" >  {{customer.nombre}}</ion-label>
+
+      
+      <ion-label slot="end" text-right >{{customer.diadepago}}</ion-label>
+
+      <ion-reorder slot="end">
+
+      </ion-reorder>
+      </ion-item>
+
+    <ion-item-options side="end">
+ 
+      <ion-item-option color="secondary"
+        (click)="showCustomer(customer.idMeta,customer.user,customer.nombre,customer.direccion,customer.telefono,customer.identificacion,customer.codigo,customer.valoratrasos,customer.atrazos,customer.iniciocredito,customer.ultimoabono,customer.valorcuota,customer.diadepago,customer.abono,customer.saldo,customer.plazo,customer.credito,customer.fest)">Informacion
+      </ion-item-option>
+
+  <!--     <ion-item-option color="dark"
+      (click)="futbol_local(customer.customer_id,customer.name_customer,customer.desc_customer,customer.contact_customer,customer.login_id)">Retar
+    </ion-item-option>
+ -->
+      <ion-item-option (click)="updateCustomer(customer.idMeta,customer.user,customer.nombre,customer.direccion,customer.telefono,customer.identificacion,customer.codigo,customer.valoratrasos,customer.atrazos,customer.iniciocredito,customer.ultimoabono,customer.valorcuota,customer.diadepago,customer.abono,customer.saldo,customer.plazo,customer.credito,customer.fest)">
+        Abonar</ion-item-option>
+
+    </ion-item-options>
+  </ion-item-sliding>
+
+</ion-card>
+<!-- </ion-reorder-group> -->
+</ion-list>
+
+
+
+<ion-list *ngIf="!customer">
+    <ion-card *ngFor="let customer of customers "   >
+      
+      <ion-item-sliding    >     
+        <ion-item-options   side="start">
+          <ion-item-option color="danger" (click)="delCustomer(customer.customer_id)">Eliminar</ion-item-option>
+        </ion-item-options>
+    
+        <ion-item    >
+          <ion-item>
+        <ion-avatar item-start> 
+           <ion-skeleton-text animated width="80%" > </ion-skeleton-text>
+          </ion-avatar>
+        </ion-item>
+          <ion-label text-left > 
+              <ion-skeleton-text animated width="60%" > </ion-skeleton-text>
+            </ion-label>
+          <ion-label slot="end" text-right >
+              <ion-skeleton-text animated width="40%" > </ion-skeleton-text>
+          </ion-label>
+          </ion-item>
+    
+        <ion-item-options side="end">
+    
+          <ion-item-option color="secondary"
+            (click)="showCustomer(customer.customer_id,customer.name_customer,customer.desc_customer,customer.contact_customer,customer.namedest,customer.ident,customer.login_id)">Historial
+          </ion-item-option>
+    
+          <ion-item-option (click)="updateCustomer(customer.customer_id,customer.name_customer,customer.desc_customer,customer.contact_customer,customer.login_id)">
+            Transferir</ion-item-option>
+    
+        </ion-item-options>
+      </ion-item-sliding>
+    
+    </ion-card>
+    
+    </ion-list>
+
+
+
+  <ion-infinite-scroll  (ionInfinite)="loadData($event)">
+    
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando Contactos...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+
+ 
+
+      <ion-fab  horizontal="end" vertical="bottom" slot="fixed">          
+        <ion-fab-button color="dark">
+          <ion-icon color="secondary" name="finger-print"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="start">
+          <ion-fab-button color="tertiary" (click)="colores(customer.customer_id,customer.name_customer,customer.desc_customer,customer.contact_customer,customer.login_id)">
+            <ion-icon name="cash"></ion-icon>
+          </ion-fab-button>
+         <!--  <ion-fab-button color="warning"  (click)="addRecarga()" >
+              <ion-icon name="tablet-portrait"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button color="danger" (click)="futbol_local()">
+            <ion-icon name="pin"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button color="secondary" (click)="alMundo()">
+              <ion-icon name="planet"></ion-icon>
+            </ion-fab-button> -->
+        </ion-fab-list>
+      
+      </ion-fab>
+  
+   
+ 
+</ion-content>  

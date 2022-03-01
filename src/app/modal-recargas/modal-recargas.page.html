@@ -1,0 +1,172 @@
+<ion-header no-border >
+    <ion-toolbar color="dark" >
+        <div   *ngFor="let upsaldo of upsaldos" >
+      <ion-button slot="start"  expand="block" color="secondary" fill="outline">
+        Tienes para recargas $ {{upsaldo.saldo}}
+        <ion-icon name="phone-portrait"></ion-icon>
+      </ion-button>
+     <!--  <ion-buttons slot="end">
+          <ion-back-button text="Volver" icon="return-left" color="tertiary" fill="outline"></ion-back-button>
+        </ion-buttons>  -->
+      </div>
+    </ion-toolbar>
+    <!-- <ion-searchbar color="dark" animated 
+                            (ionChange)="buscar( $event )"></ion-searchbar>
+   -->
+  
+    <!-- <ion-searchbar color="dark" animated 
+                            (ionChange)="buscar( $event )"></ion-searchbar>
+   -->
+</ion-header>
+
+<ion-content color="dark" padding fullscreen >
+    <ion-refresher  slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="dots"
+          refreshingText=" Estamos Trabajando... {{ username }} "  >
+        </ion-refresher-content>
+      </ion-refresher>
+    
+<!-- 
+  <p>
+    {{ no_abonado }}  - {{ valor }} 
+  </p> -->
+
+  <div class="carga-box" >
+      <h1>Paquetes Claro</h1>
+      
+      
+      
+      <div class="textbox">
+        <input type="number" [(ngModel)]="no_abonado" placeholder="Numero">
+      </div>
+      <br>
+  <ion-item color="dark" >
+      <ion-label color="light" >Escoge Tu paquete</ion-label>
+      <ion-select color="dark" [(ngModel)]="operador" >
+          <ion-select-option value="244">1 PAQUETE</ion-select-option>
+          <ion-select-option value="245">2 PAQUETE</ion-select-option>
+          <ion-select-option  value="246">3 PAQUETE</ion-select-option>
+          <ion-select-option value="238"> 4 PAQUETE</ion-select-option>
+           <ion-select-option value="248"> 5 PAQUETE</ion-select-option>
+          <ion-select-option value="73"> 6 PAQUETE</ion-select-option>
+          <ion-select-option value="249"> 7 PAQUETE</ion-select-option>
+          <ion-select-option value="68"> 8 PAQUETE</ion-select-option>
+          <ion-select-option value="70"> 9 PAQUETE</ion-select-option>
+          <ion-select-option value="74"> 10 PAQUETE</ion-select-option>
+          <ion-select-option value="98">11 PAQUETE</ion-select-option>
+          <ion-select-option value="186">12 PAQUETE</ion-select-option>
+          <ion-select-option  value=71>13 PAQUETE</ion-select-option>
+          <ion-select-option value="72"> 14 PAQUETE</ion-select-option>
+           <ion-select-option value="64"> 15 PAQUETE</ion-select-option>
+          <ion-select-option value="65"> 16 PAQUETE</ion-select-option>
+          <ion-select-option value="66"> 17 PAQUETE</ion-select-option>
+          <ion-select-option value="250"> 18 PAQUETE</ion-select-option>
+          <ion-select-option value="251"> 19 PAQUETE</ion-select-option>
+          <ion-select-option value="252"> 20 PAQUETE</ion-select-option>
+          <ion-select-option value="253">21 PAQUETE</ion-select-option>
+          <ion-select-option value="92">22 PAQUETE</ion-select-option>
+          <ion-select-option  value="181">23 PAQUETE</ion-select-option>
+          <ion-select-option value="179"> 24 PAQUETE</ion-select-option>
+           <ion-select-option value="95"> 25 PAQUETE</ion-select-option>
+          <ion-select-option value="76"> 26 PAQUETE</ion-select-option>
+    
+      </ion-select>
+    </ion-item>
+    
+
+  <!--  <ion-button  (click)="EnviarDatos()"
+               color="secondary" expand="full" >
+     Listo
+   </ion-button>
+-->
+
+<div class="textbox">
+    <input type="number" [(ngModel)]="valor" placeholder="Valor">
+  </div>
+   
+    
+      
+    
+      
+    
+      
+     
+      <!-- <ion-grid fixed>
+        <ion-row >
+          <ion-col size-sm="3" size-lg="3" size-md="3" size="3" size-xs="3" *ngFor="let imagen of imagenes"  >        
+             <ion-buttons>
+                <ion-button>
+            <ion-avatar item-start>  <img src="{{imagen}}"/> </ion-avatar>                  
+          </ion-button>
+        </ion-buttons>
+          </ion-col>
+       
+        </ion-row>
+      </ion-grid> -->    
+    
+      <br>
+      
+      <div *ngFor="let upsaldo of upsaldos"  >
+        <ion-button  expand="block" color="success" *ngIf="upsaldo.saldo >= valor"  (click)="hacerRecarga()" fill="outline">
+          Recargar $ {{ valor }} al {{ no_abonado }}
+          <ion-icon slot="start" name="phone-portrait"></ion-icon>
+        </ion-button>
+    
+        <ion-button expand="block" color="danger" *ngIf="valor > upsaldo.saldo" (click)="RecargaProces()" fill="outline">
+           Ups... $ {{ upsaldo.saldo }}  no alcanza
+            <ion-icon slot="start" name="outlet"></ion-icon>
+          </ion-button>
+    
+        </div>
+    
+      
+    
+   
+    <br>
+      <button  (click)="salirSinNada()" class="btn2">Mejor en otro momento</button> 
+      </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+   <div>
+     <p>1- 6D $6,000 Llamadas y sms ilimitados+170Mb incluye Whatsp,Facebook y Twitter </p>
+     <p>2- 10D $10,000 Llamadas y sms ilimitados+400Mb incluye Whatsp,Facebook y Twitter</p>
+     <p>3- 20D $20,000 Llamadas y sms ilimitados+850Mb incluye Whatsp,Facebook y Twitter</p>
+     <p>4- 30D $40,000 Llamadas y sms ilimitados + 1.8GB incluye Whatsp, Facebook y Twitter</p>
+     <p>5- 15D $20,000 TD Ilimitados Internet 2GB Minutos y SMS</p>
+     <p>6- 5D  $5,000 100 MINUTOS</p>
+     <p>7- $3,000 50 Min TD.+ Internet 60MB + WhatsApp + Facebook + Twitter + 500 SMS  </p>
+     <p>8- $3,000 2 DIAS 60 MINUTOS </p>
+     <p>9- $1,000 1 DIA 20 MINUTOS</p>
+     <p>10- $9,900 20 DIAS 200 MINUTOS</p>
+     <p>11- $5,000 18 minutos a venezuela</p>
+     <p>12- $5,000 30MIN USA CAN PR MEX</p>
+     <p>13- $2,000 1 DIA  100MB Navegacion</p>
+     <p>14- $4,000 3 DIAS  220MB Navegacion</p>
+     <p>15- $2,000 1 DIA  50MB + Whatsapp + Facebook + Twitter</p>
+     <p>16- $4,000 3 DIAS 120MB + Whatsapp + Facebook + Twitter</p>
+     <p>17- $15,000 7 DIAS 500MB + Whatsapp + Facebook + Twitter</p>
+     <p>18- INALAMBRICO 2GB $21,900</p>
+     <p>19- INALAMBRICO 2GB $39,900</p>
+     <p>20- INALAMBRICO 10GB $59,900</p>
+     <p>21- INALAMBRICO 20GB $99,900</p>
+     <p>22- 1dia $2,500 Instagram</p>
+     <p>23- 7D $15,000 INSTAGRAM_ILIMIT</p>
+     <p>24- Navegacion Ilimitada 2 horas $5,000</p>
+     <p>25- youtube 1 hora $3,000</p>
+     <p>26- Whatsapp 30 DIAS $18,000</p>
+
+   </div>
+
+    
+    
+    </ion-content>
+    

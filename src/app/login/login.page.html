@@ -1,0 +1,49 @@
+<ion-header  >
+  <ion-toolbar color="dark" >
+    <ion-title>Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding="40" color="dark" >
+ 
+
+ <!--    <ion-item expand="full" fill="outline"   color="dark" >
+      <ion-label color="primary"  position="floating">Usuario</ion-label>
+      <ion-input color="primary"  [(ngModel)]="username"></ion-input>
+    </ion-item >  
+    <ion-item  color="dark" >
+      <ion-label color="primary"  position="floating">Contraseña</ion-label>
+      <ion-input color="primary"  type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+  <div padding>
+    <ion-button  expand="full" fill="outline" (click)="proseslogin()" >Entrar</ion-button>
+    <ion-button expand="full" fill="outline" (click)="formRegister()">Registrate</ion-button>
+  </div> -->
+  
+  <ion-list class="box"> 
+
+    <ion-input focus  color="primary" type="text"  [(ngModel)]="username" placeholder="Usuario" ></ion-input>
+    
+    <ion-input  color="primary"  type="password" [(ngModel)]="password" placeholder="Contraseña" ></ion-input>
+  
+    <div  padding>
+        <ion-button color="secondary" class="botones" expand="full" fill="outline" (click)="proseslogin()" >Entrar</ion-button>
+        <ion-button color="secondary" expand="full" fill="outline" (click)="formRegister()">Registrate</ion-button> 
+      </div> 
+
+  </ion-list>
+<!--
+
+  <div class="container loader">
+    <span>S</span>
+    <span>E</span>
+    <span>L</span>
+    <span>L</span>
+    <span>M</span>
+    <span>A</span>
+    
+</div>
+
+-->
+</ion-content>
+

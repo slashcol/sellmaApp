@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="dark">
+
+      <ion-buttons slot="end"  >
+    <ion-button  slot="end" color="secondary" fill="outline">
+  {{nombre}}
+      <ion-icon name="trending-up"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+    <ion-buttons slot="start">
+      <ion-back-button text="Volver" icon="return-left" color="tertiary" fill="outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Desliza hacia abajo para Actualizar" refreshingSpinner="dots"
+      refreshingText=" Estamos Trabajando... {{ username }} "  >
+    </ion-refresher-content>
+  </ion-refresher>
+ 
+  <!--
+  <ion-item>
+    <ion-label position="floating"> nombre </ion-label>
+    <ion-input type="label" [(ngModel)]="name_customer"></ion-input>
+  </ion-item>
+-->
+<!-- 
+    <ion-label color="primary" position="floating"> Describe tu Transferencia </ion-label>
+    <ion-textarea color="medium" [(ngModel)]="saldo">  </ion-textarea>
+
+ -->
+
+  <ion-item  >
+    <ion-label color="primary" position="floating"> Monto </ion-label>
+    <ion-input type="number"  [(ngModel)]="abono"> </ion-input>
+  </ion-item>
+
+ 
+
+  <ion-content padding >
+      <ion-button  expand="block" color="tertiary"  (click)="updateProses()" fill="outline">
+        Abonar $ {{ abono }} a {{ nombre }}
+        <ion-icon slot="end" name="paper-plane"></ion-icon>
+      </ion-button>
+      <br>
+      <br>
+
+      Saldo Actual:
+  <p class="data" >{{ saldo }}   </p>   
+  Abono: 
+  <p class="data" >{{ abono }}   </p>  
+ 
+  <p class="data" >=============  </p>  
+  Nuevo Saldo:
+  <p class="data" >{{ saldo - abono }}   </p>    
+
+
+      
+  
+     <!--  <ion-button expand="block" color="danger" *ngIf="monto_customer > upsaldo.saldo" (click)="RecargaProces()" fill="outline">
+         Ups... $ {{ monto_customer }} superan tus $ {{ upsaldo.saldo }} de Saldo
+          <ion-icon slot="end" name="paper-plane"></ion-icon>
+        </ion-button>
+ -->
+  </ion-content>
+
+</ion-content>

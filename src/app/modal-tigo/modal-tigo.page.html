@@ -1,0 +1,167 @@
+<ion-header no-border >
+    <ion-toolbar color="dark" >
+        <div   *ngFor="let upsaldo of upsaldos" >
+      <ion-button slot="start"  expand="block" color="secondary" fill="outline">
+        Tienes para recargas $ {{upsaldo.saldo}}
+        <ion-icon name="phone-portrait"></ion-icon>
+      </ion-button>
+     <!--  <ion-buttons slot="end">
+          <ion-back-button text="Volver" icon="return-left" color="tertiary" fill="outline"></ion-back-button>
+        </ion-buttons>  -->
+      </div>
+    </ion-toolbar>
+    <!-- <ion-searchbar color="dark" animated 
+                            (ionChange)="buscar( $event )"></ion-searchbar>
+   -->
+  
+    <!-- <ion-searchbar color="dark" animated 
+                            (ionChange)="buscar( $event )"></ion-searchbar>
+   -->
+</ion-header>
+
+<ion-content color="dark" padding fullscreen >
+    <ion-refresher  slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="dots"
+          refreshingText=" Estamos Trabajando... {{ username }} "  >
+        </ion-refresher-content>
+      </ion-refresher>
+<!-- 
+<p>
+  {{ no_abonado }}  - {{ valor }} 
+</p> -->
+
+<div class="carga-box" >
+    <h1>Paquetes Tigo</h1>
+    
+    
+    
+    <div class="textbox">
+      <input type="number" [(ngModel)]="no_abonado" placeholder="Numero">
+    </div>
+    <br>
+<ion-item color="dark" >
+    <ion-label color="light" >Escoge Tu paquete</ion-label>
+    <ion-select color="dark" [(ngModel)]="operador" >
+      <ion-select-option value="155">1 PAQUETE</ion-select-option>
+      <ion-select-option value="241">2 PAQUETE</ion-select-option>
+      <ion-select-option  value="85">3 PAQUETE</ion-select-option>
+      <ion-select-option value="190"> 4 PAQUETE</ion-select-option>
+       <ion-select-option value="191"> 5 PAQUETE</ion-select-option>
+      <ion-select-option value="15"> 6 PAQUETE</ion-select-option>
+      <ion-select-option value="17"> 7 PAQUETE</ion-select-option>
+      <ion-select-option value="33"> 8 PAQUETE</ion-select-option>
+      <ion-select-option value="34"> 9 PAQUETE</ion-select-option>
+      <ion-select-option value="43"> 10 PAQUETE</ion-select-option>
+      <ion-select-option value="80">11 PAQUETE</ion-select-option>
+      <ion-select-option value="82">12 PAQUETE</ion-select-option>
+      <ion-select-option  value=83>13 PAQUETE</ion-select-option>
+      <ion-select-option value="205"> 14 PAQUETE</ion-select-option>
+       <ion-select-option value="206"> 15 PAQUETE</ion-select-option>
+      <ion-select-option value="207"> 16 PAQUETE</ion-select-option>
+      <ion-select-option value="208"> 17 PAQUETE</ion-select-option>
+      <ion-select-option value="209"> 18 PAQUETE</ion-select-option>
+      <ion-select-option value="210"> 19 PAQUETE</ion-select-option>
+      <ion-select-option value="239"> 20 PAQUETE</ion-select-option>
+      <ion-select-option value="12">21 PAQUETE</ion-select-option>
+      <ion-select-option value="19">22 PAQUETE</ion-select-option>
+      <ion-select-option  value="20">23 PAQUETE</ion-select-option>
+     
+        
+  
+    </ion-select>
+  </ion-item>
+  
+
+<!--  <ion-button  (click)="EnviarDatos()"
+             color="secondary" expand="full" >
+   Listo
+ </ion-button>
+-->
+
+<div class="textbox">
+  <input type="number" [(ngModel)]="valor" placeholder="Valor">
+</div>
+ 
+  
+    
+  
+    
+  
+    
+   
+    <!-- <ion-grid fixed>
+      <ion-row >
+        <ion-col size-sm="3" size-lg="3" size-md="3" size="3" size-xs="3" *ngFor="let imagen of imagenes"  >        
+           <ion-buttons>
+              <ion-button>
+          <ion-avatar item-start>  <img src="{{imagen}}"/> </ion-avatar>                  
+        </ion-button>
+      </ion-buttons>
+        </ion-col>
+     
+      </ion-row>
+    </ion-grid> -->    
+  
+    <br>
+      
+    <div *ngFor="let upsaldo of upsaldos"  >
+      <ion-button  expand="block" color="success" *ngIf="upsaldo.saldo >= valor"  (click)="hacerRecarga()" fill="outline">
+        Recargar $ {{ valor }} al {{ no_abonado }}
+        <ion-icon slot="start" name="phone-portrait"></ion-icon>
+      </ion-button>
+  
+      <ion-button expand="block" color="danger" *ngIf="valor > upsaldo.saldo" (click)="RecargaProces()" fill="outline">
+         Ups... $ {{ upsaldo.saldo }}  no alcanza
+          <ion-icon slot="start" name="outlet"></ion-icon>
+        </ion-button>
+  
+      </div>
+  
+    
+  
+ 
+  <br>
+    <button  (click)="salirSinNada()" class="btn2">Mejor en otro momento</button> 
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+     <div>
+       <p>1- 15MIN TDN_1D $2,000</p>
+       <p>2- 30 MIN + 5 SMS A TODO DESTINO + 500 MB  $5,000</p>
+       <p>3- 170MB MINILIMITDO_6D $6,000</p>
+       <p>4- Minutos Ilimitados a TDN 15 Dias $15,000</p>
+       <p>5- Minutos ilimitados a TDN 30 Dias $30,000</p>
+       <p>6- 7 DIAS O 600MB INT $14,900</p>
+       <p>7- INT TOTA 2 GB 30DIAS $39,000</p>
+       <p>8- 50MIN+500MB TD O 7D $18,900</p>
+       <p>9- 7 MIN + 3SMS TD 1DIA $1,000</p>
+       <p>10- ALLNET 1DIA $4,900</p>
+       <p>11- 250MB+70MIN 0 10D $10,00</p>
+       <p>12- 500MB+ILIM TD O 3D $5,000</p>
+       <p>13- 1GB+ILIM TD O 7D $10,000</p>
+       <p>14- INTERNET 150MB 2DIAS $3,000</p>
+       <p>15- 2GB_MINILIMTADOS_15D $20,000</p>
+       <p>16- 400MB+MINILIMTDO_10D $10,000</p>
+       <p>17- 60MB+20MNTS-2D $3,000</p>
+       <p>18- 850MB+MINILIMTDO_20D  $20,000</p>
+       <p>19- ILIM TD 1 DIA $4,900</p>
+       <p>20- MIN + SMS ILIMITADOS A TODO DESTINO + 1 GB  $10,000</p>
+       <p>21- 5 MIN LDI DIA $3,100</p>
+       <p>22- 10MINT LDI 2DIAS $5,400</p>
+       <p>23- 30 MIN LDI 15 DIAS $15,600</p>
+    
+  
+     </div> 
+  
+  
+  </ion-content>
+  

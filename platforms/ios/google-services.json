@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "764235553065",
+    "firebase_url": "https://notificaciones-sellma.firebaseio.com",
+    "project_id": "notificaciones-sellma",
+    "storage_bucket": "notificaciones-sellma.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764235553065:android:6c1e4963bc86efdcfabf38",
+        "android_client_info": {
+          "package_name": "com.sellma.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764235553065-72jv9alfjmo1ihc3npgbkvclcvqmkm30.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLTgMA4TLp_Nj57VMsNvpzuFMzaGjv1YA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764235553065-72jv9alfjmo1ihc3npgbkvclcvqmkm30.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

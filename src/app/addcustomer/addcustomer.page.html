@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar color="dark" >
+      <ion-title color="tertiary" > {{ username }}, Agrega Un Amigo</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button text="Volver" icon="return-left" color="tertiary" fill="outline"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-item>
+      <ion-label color="primary" position="floating"> Nombre Contacto </ion-label>
+      <ion-input type="text" [(ngModel)]="name_customer"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label color="primary" position="floating"> Identificacion Contacto </ion-label>
+      <ion-textarea [(ngModel)]="contact_customer"></ion-textarea>
+    </ion-item>
+   
+  
+    <ion-button expand="block" padding color="tertiary" *ngIf="!id" (click)="createdProses()" fill="outline">Crear</ion-button>
+    <ion-button expand="block" padding color="tertiary" *ngIf="id>=1" (click)="updateProses()" fill="outline">Enviar</ion-button>
+  
+  </ion-content>
+  
